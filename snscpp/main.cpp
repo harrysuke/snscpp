@@ -24,11 +24,21 @@ void readAllVEP(Connection* conn) {
         Statement* stmt = conn->createStatement();
         ResultSet* rs = stmt->executeQuery("SELECT * FROM vep");
 
+        cout << "==================== VEP Records ====================" << endl;
+        cout << "NRIC/Passport No\tName\tCompany name" << endl;
+        cout << "=====================================================" << endl;
+
         while (rs->next()) {
-            cout << "NRIC/Passport No: " << rs->getString("NRICPassportNo") << endl;
-            cout << "Name: " << rs->getString("Name") << endl;
-            cout << "Company name: " << rs->getString("CompanyName") << endl;
+            //cout << "NRIC/Passport No: " << rs->getString("NRICPassportNo") << endl;
+            //cout << "Name: " << rs->getString("Name") << endl;
+            //cout << "Company name: " << rs->getString("CompanyName") << endl;
+            cout << rs->getString("NRICPassportNo") << "\t"<< rs->getString("Name") << "\t" << rs->getString("CompanyName") << endl;
         }
+
+        cout << "=====================================================" << endl;
+        cout << "NRIC/Passport No\tName\tCompany name" << endl;
+        cout << "====Total number of records: " << rs->rowsCount() << "====" << endl;
+
         delete rs;
         delete stmt;
     }
@@ -170,14 +180,14 @@ void deleteVEP(Connection* conn) {
 
 void mainMenu() {
     cout << "Welcome to Safety and Security system" << endl;
-    cout << "**********************************" << endl;
+    cout << "=====================================================" << endl;
     cout << "SNS menu" << endl;
     cout << "1. Create new VEP" << endl;
     cout << "2. Update exsiting record" << endl;
     cout << "3. View all records" << endl;
     cout << "4. Search VEP record" << endl;
     cout << "5. Delete existing record" << endl;
-    cout << "**********************************" << endl;
+    cout << "=====================================================" << endl;
 }
 
 int main()
